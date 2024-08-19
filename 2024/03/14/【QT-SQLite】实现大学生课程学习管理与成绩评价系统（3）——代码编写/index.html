@@ -1,370 +1,232 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="Hexo Theme Redefine">
-    
-    <meta name="author" content="安尘">
-    <!-- preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写 | Anchen</title><meta name="keywords" content="QT"><meta name="author" content="Anchen"><meta name="copyright" content="Anchen"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写"><meta name="application-name" content="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写"><meta property="og:url" content="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/index.html"><meta property="og:site_name" content="Anchen"><meta property="og:description" content="1.	整体设计可视化界面设计：&amp;amp;emsp;&amp;amp;emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg"><meta property="article:author" content="Anchen"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg"><meta name="description" content="1.	整体设计可视化界面设计：&amp;amp;emsp;&amp;amp;emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删"><link rel="shortcut icon" href="/logo_1.jpg"><link rel="canonical" href="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Anchen","link":"链接: ","source":"来源: Anchen","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Anchen',
+  title: '【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写',
+  postAI: '',
+  pageFillDescription: '1.	整体设计, 3.	登入验证, 4.	学生基础信息查询和维护：, 5.	学生选课信息查询和维护：, 6.	学生学业信息查询：, 7. 系、班级信息的维护和查询, 8. 教师基本信息查询和维护：, 9. 课程信息查询和维护：, 10. 教师授课信息查询：, 11. 学生选课功能：, 12. 校园导航：, 13. 界面跳转整体设计可视化界面设计本系统的可视化界面主要显示在创建的主窗口上通过实现不同功能显示在不同页面的分页功能利用显示查询得到的数据利用创建槽函数实现鼠标点击实现增加数据删除数据修改数据的功能利用控件获取用户输入的信息实现增加修改数据控件创建的作为学生基本信息查询界面作为学生选课及成绩录入界面作为学生学业情况查询界面作为教师授课情况查询界面作为课程信息查询及录入界面作为系班级信息查询界面作为教师基本信息查询界面作为学生选课的界面同时在主窗口之外也新建了界面用于显示登录界面区分是学生登入还是教师登入并且学生登入时需要输入学号用于选课新建了界面用于选择功能学生登入和教师登入时可选择的功能也有不同这样也可以保证数据库的安全性界面和界面分别用于增加和修改学生基础信息界面用于显示校园地图和实现最短路径的查询和教学设施的地图查询界面录入课程信息时通过教学楼交互平面图选择课程教室界面用于实现通过在主窗口选定课程自动显示所在教室位置的功能头文件与文件及其文件均主要实现对应界面中的数据操作功能在头文件和文件中利用语言编写代码实现界面中需要的功能设计用于编写空间数据的类及无向图的类及其文件用于连接数据库已经实现对数据库中相应数据的增加删除修改以及查询和成绩到绩点的换算的功能文件中利用指针实现对文件中函数的调用完成对数据库的维护和查询并在主窗口中显现查询的数据或者通过的槽函数维护数据连接数据库该文件中编写的代码主要用于实现数据库的连接和实现对数据库中数据的增加删除修改和查询因为本系统需要利用可视化图形界面来实现数据的查询和维护所以采用来进行编写代码利用作为构建套件进行构建和运行利用创建数据库并连接到中在文件中函数用于连接中创建的数据库通过包含头文件库并利用函数来实现连接调用函数初始化利用函数告知数据库文件的地址及名字调用函数连接数据库并且执行打开默认关登入验证在中定义了函数连接数据库获取学生密码和获取教师密码并在中利用函数进行判断判断输入正确后发送信号跳转页面学生基础信息查询和维护查询学生基础信息在中定义了类用于存储和区分从数据库中获取的单条数据的数据项并定义了函数用于查询数据库存储有的学生基础信息的元组数定义了函数用于获取所有学生基础信息的数据函数执行了嵌入式语句并把得到的内容转化为整型返回函数定义了类型的数组利用和循环逐条遍历嵌入式语句从数据库中获取的数据存入类型的数组中在中总共定义了函数用于查询学生基础信息和在更新数据后更新显示的数据在函数中利用了函数设置了对应界面中的的表头利用了完成选中一行数据的功能利用声明的类的指针调用在中声明的函数从数据库中获取所有的学生基础信息的数量设置为的行数以及调用在中声明的函数从数据库中获取所有的学生基础信息并赋值给类型的数组再利用循环把中的数据遍历输出到对应的中增加学生基础信息在中定义了用于增加学生基础信息通过传入一条类型的数据后执行嵌入式语句利用填充内容再通过判断是否正确执行进行错误检验在定义了槽函数用于调用函数转到创建的数据增加页面该界面会给用户提供输入学生基础信息的控件在中定义了槽函数和分别用于保存需要添加的学生基础信息和退出该界面函数先通过函数保证了用户在输入信息时没有遗漏学生姓名和班级信息在保证信息均输入之后从界面中添加的控件中获取信息赋给类型的变量再利用类的指针调用函数实现在数据库中增加信息同时也定义了函数在按下界面中的控件后能清空控件中的数据和使中的数据回到第一个值增加完成后调用函数重新查询数据删除学生信息在这里设置两种删除方式删除单条数据和删除全部数据所以添加了控件用户选择就进行删除全部数据所以在中定义了两个函数用于删除单条数据和函数删除全部学生数据函数通过输入的学生学号执行嵌入式语句并利用输入学号同样利用判断是否成功执行执行了语句执行后同样利用判断是否成功执行在定义的槽函数中利用函数判断控件是否选中选中则调用函数没有选中则利用取出当前行的索引再利用函数取出当前行的学生学号再调用函数传入学生学号删除完成后调用函数重新查询数据修改学生信息在实现修改学生信息时代码编写的方式同增加学生信息时相似通过在主窗口中的控件触发槽函数显现创建的界面通过修改界面的触发槽函数调用定义的函数执行利用填入要修改的内容利用主键学生学号作为条件通过返回的触发槽函数调用函数关闭修改界面每次按下保存和返回时都会调用函数清空用户输入或选择的内容修改完成后调用函数重新查询数据搜索学生信息学生信息按班级或系代号搜索主要通过对获取的所有学生信息进行遍历对比再重新输出到对应的界面中的中槽函数触发后在判断搜索条件非空的情况下重新利用等函数设置的格式和选中整行再调用函数获取所有数据利用循环把满足函数的数据及一条数据中班级项中包含搜索条件或是系代号项包含搜索条件的数据输出到中下图是学生基础信息查询和维护界面的功能实现的主要函数调用示意图学生选课信息查询和维护在中定义了类用于存储本功能需要的数据库中的数据在类中定义了用于存储学生学号用于存储学生姓名用于存储课程名称用于存储课程号用于存储课程成绩用于存储课程绩点作为重修标记查询学生选课和成绩信息该功能的实现与学生基础信息查询的实现类似在中定义用于显现学生选课情况先设置表的标头以及选中行再调用类的指针调用用于指定行数再调用类的指针调用返回在中定义的类的数组通过循环把获取的类的数组中的数据输出到本界面对应的中同时定义了函数来往界面中的控件中添加数据库中提取的相应的内容先调用函数获取所有的学生数据再遍历把所有的学生姓名加入控件中在是否重修的控件中利用分别添加字符串是和否调用获取数据把课程号加入控件中增加学生选课和成绩信息该功能同样与学生基础信息增加的实现类似在中通过槽函数利用类指针调用中定义的传入从界面上获取的数据执行嵌入式语句增加学生选课信息最后调用清空所有用户输入或者选择的内容最后再调用和显示界面中的数据和其他内容删除学生选课和成绩信息该功能同样与学生基础信息删除的实现类似在中通过槽函数先利用获取当前行索引再和分别获取学生学号和课程号再调用传入学号和课程号执行嵌入式语句利用填入学号和课程号最后调用重新查询并显现数据修改学生选课和成绩信息该功能同样与学生基础信息修改的实现类似在中通过槽函数利用类变量记录从界面中获取的修稿修改的数据再调用函数传入类变量执行填入类变量中的数据调用完成后再调用函数清空用户输入或者选择的内容最后调用和显示界面中的数据和其他内容下图是学生选课信息查询和维护界面的功能实现的主要函数调用示意图学生学业信息查询在中定义了类用于存储在实现本功能时需要的数据库中的数据在类中定义了用于存储学生学号用于存储学生姓名用于存储学生平均学分绩点用于存储班级均分用于存储学生成绩用于存储课程类型是重修的标记为课程学分是模式中存储的学生数量该功能的实现需要借助于预先创建好的数据库用于存储计算和分组排序后得到的学生学业信息的汇总情况在中定义了用于获取学业信息并按班级分组该函数先利用变量通过循环遍历存储嵌入式语句执行得到的学生数据再利用变量也通过循环遍历存储嵌入式语句得到的学号成绩重修标记课程性质学分数据再通过循环遍历每次用的一条数据遍历寻找学生学号相同的变量中的数据找到相同的学生学号数据则对定义的用于记录学分的整型变量加上对应的学分同时也对定义的用于记录课程学分课程学分绩点的整型变量加上经过换算的数值换算规则为课程性质为基础必修课程权重系数绩点课程学分专业必修程权重系数绩点课程学分选修程权重系数绩点课程学分每次遍历把得到的数据存储到定义的数组中并且通过执行语句把数据存储进数据库中定义的用于从数据库中获取计算后的学分信息并排序执行的语句为当打开本界面查询学生学业成绩时函数会调用函数来显示数据定义的函数调用了获取分区排序好的数据数组利用循环遍历输出至本界面的中而定义的槽函数则会调用中定义的函数把排序好的数据再次输出进数据库的中先调用函数执行语句清空数据库清空结束后利用循环多次执行语句从定义的数组中获取调用函数获得的数据按行增加进入数据库下图是学生学业情况查询界面的功能实现的主要函数调用示意图系班级信息的维护和查询在中定义了类在该类中定义了个字符串型变量分别用于存储系代号系名系办公室电话班级班级个数查询系班级的信息在中定义函数用于系数量的查询和函数用于获取所有数据函数执行了嵌入式语句返回了把系关系模式和班级关系模式进行等值连接后的班级属性分量个数函数则返回了把系关系模式和班级关系模式进行等值连接后的所有数据利用定义的类型数组进行存储在中定义了函数用于在本界面的中显示数据利用函数设置表头设置函数的返回值为行数再利用循环遍历每行输出至中增加系班级的信息本功能利用在中创建的槽函数在用户输入的系代号不为空的情况下利用中定义的指针调用函数利用传入用户输入的信息当增加的信息中的系不存在时执行语句和分别在系模式和班级模式中增加数据当系存在时执行语句只在班级模式中增加数据最后调用函数重新输出数据删除系班级的信息本功能利用在中创建的槽函数在利用和函数取出系代号和班级后调用函数执行之后利用获取班级模式中的系代号数据遍历判断该系代号在班级表中是否存在不存在时执行删除没有班级信息的系最后调用函数重新输出数据修改系班级的信息本功能利用在中创建的槽函数调用函数传入用户输入的信息后执行修改信息最后调用函数重新输出数据教师基本信息查询和维护在中定义了类该类定义了个变量用于存储教师工作证号用于存储教师姓名用于存储教师职称用于存储教师电话用于存储系代号查询教师基本信息本功能利用在中定义的进行信息的查询和显示函数利用函数设置表头设置函数的返回值为行数再利用函数执行返回的所有数据利用循环输出到本界面中的中增加教师基本信息本功能利用在中定义的槽函数调用函数执行语句增加教师基本信息执行结束后调用清空输入内容和函数重新查询并显示数据到本界面的中删除教师基本信息本功能利用在中定义的槽函数在利用和函数取出教室号后调用执行语句最后调用函数重新查询并显示数据到本界面的中修改教师基本信息本功能利用在中定义的槽函数调用函数执行更新数据执行结束后调用清空输入内容和函数重新查询并显示数据到本界面的中课程信息查询和维护在中定义了类用于存储课程模式中的数据定义的用于存储课程号用于村春课程名用于存储课程性质用于存储课程学分用于存储上课时间用于存储课程名额用于存储教室号查询课程信息本功能利用在中定义的函数先利用函数设置表头设置函数的返回值为行数再调用函数执行获取所有课程信息再利用循环从数组中逐行输出数据至中同时定义了函数用于显示界面中外的内容调用了函数执行语句获取课程号输出到中增加课程信息本功能利用在中定义的槽函数在判断用户输入的课程号课程名不为空的情况下调用函数传入用户输入数据执行语句增加课程信息执行结束后调用清空输入内容和函数重新查询并显示数据到本界面的中删除课程信息本功能利用在中定义的槽函数利用和函数取出课程号后调用执行语句删除指定元组最后调用函数重新查询并显示数据到本界面的中修改课程信息本功能利用在中定义的槽函数在用户输入课程名和学分的情况下调用函数执行更新数据执行结束后调用清空输入内容和函数重新查询并显示数据到本界面的中交互式选择教室此功能利用了函数定义的槽函数调用函数跳转到的界面在中定义了在界面中打印教学楼的平面图函数设置了打印的位置和大小函数记录了图片路径和名称函数实现了打印定义的鼠标左击事件利用函数判断鼠标在界面中点击的坐标和坐标利用变量记录教室号利用变量把教室号返回至主窗口中用于增加或修改信息时填入教室号定义的槽函数调用了函数用于关闭界面显示教室位置此功能利用了函数定义的槽函数调用函数跳转到的界面同时利用了信号和槽传递了教室信息在中定义了发送信号的同时传递楼层数和教室号在中定义了接收传递的数据用于连接在中定义了绘制事件利用函数设置了打印的位置和大小函数记录了图片路径和名称函数实现了显示公教一平面图和教室同时定义了和调用函数对传入的教室号进行判断在不同的位置利用绘制矩形定义的函数为主窗口退出事件利用提示用户是否确定退出界面教师授课信息查询在中定义了类用于存储教室课程模式中和其他的数据时教师工作证号存储了教师姓名存储了教师电话存储了课程名存储了课程号存储了学分本功能利用在中定义的函数先利用函数设置表头设置函数的返回值为行数再调用函数执行存储数据至数组中再利用循环逐行输出数据至本界面中的中增加课程信息和删除课程信息代码同课程信息查询和维护相似学生选课功能在本界界面中利用学生用户在登入界面输入的学号进行检索查询学生未选择的课程和已选择的课程在中定义了查询未被选择的课程和用于查询已经被选择的课两函数均先利用函数设置表头函数再调用函数执行把获得的数据存储到类型数组中设置类型数组的函数的返回值为行数再通过循环逐行输出至界面中对应的函数再调用函数执行语句把获取的数据存储到类型的数组中设置类型数组的函数的返回值为行数最后也通过循环逐行输出至界面中对应的中用于用户点击删除已选择课程利用和函数取出课程号在保证用户选中对应中的一行数据后调用函数传入学生学号和课程号执行语句删除数据最后调用和重新查询和显示数据用于用户选择课程利用和函数取出课程号在保证用户选中对应中的一行数据后调用函数传入学生学号和课程号执行增加数据最后调用和重新查询和显示数据同时利用获取该学生基础信息后利用显示在下方的文字区域定义的函数用于检查选课时没有超过名额执行了和语句对比得到的数值已选择课程人数小于名额时可以选课在执行槽函数利用函数进行保证校园导航本功能利用中定义的三个类分别用于存储边点和无向图在类中定义了为表示邻接矩阵的数组为存储顶点的数组本功能将把校园地图中的空间数据存储在这些类中利用佛洛依德算法计算最短路径最短路径查询本功能利用在中定义的函数录入校园中的所有点空间信息及坐标和坐标和名称并构建边和无向图在函数先在数组中添加顶点信息先利用循环创建所有点给与编号再利用添加点的名称为该点在界面中的坐标为该店在界面中的坐标并在二维数组中存储各边的权值没有连接的两点之间的边权值赋值为并利用循环进行对称赋值中定义的用于用户从地图中选择起点和终点通过获取鼠标点击位置的值获取鼠标点击位置的值再通过函数进行判断点击位置的点的编号当界面中选择为起点时该店编号输出为起点编号选择为终点时输出为终点编号槽函数用于获取起点和终点的编号再调用寻找最短路径函数中利用了两个二维数组和用于存储函数中创建的无向图数组用于记录点和点最短路径上的第二个点本函数先利用循环给赋值再利用循环进行最短路径计算计算后记录为和点之间对端路径的长度可以记录最短路径的经过点函数先调用了函数计算获得最短路径再利用绘图的双缓冲机制定义了对象再利用函数设置了打印的位置和大小函数记录了图片路径和名称函数实现了显示校园地图再定义画笔通过循环不断判断是否为终点的编号逐线段输出最短路径在上最后利用触发绘制事件重新绘制教学设施查询定义了用于教学设施的查询同样通过双缓冲机制先绘制在上最后用函数触发绘制事件重新绘制函数中通过对中用户选择内容的判断在不同位置绘制不同的图形主要利用了绘制矩形绘制字和绘制圆界面跳转编写代码时主要利用了两种方式来显示界面第一种利用了信号和槽原理通过发送定义的信号并利用接收同时定义了类型指针实现规定跳转的界面和需要调用的函数第二种通过包含对应界面的头文件创建对象直接调用或函数实现画面跳转关闭界面时也定义了一些控件触发槽函数进一步调用函数关闭界面',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-14 15:17:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
     
-    <!--- Seo Part-->
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
     
-    <link rel="canonical" href="http://example.com/2024/03/14/【qt-sqlite】实现大学生课程学习管理与成绩评价系统（3）——代码编写/"/>
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
-    <meta name="revisit-after" content="1 days">
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
     
-        <meta name="description" content="1.	整体设计可视化界面设计：&amp;emsp;&amp;emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删除数据、修改数据的功能；利用lineEdit、comboBox控件获取用户输入的信息实现增加、修改数">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写">
-<meta property="og:url" content="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/index.html">
-<meta property="og:site_name" content="Anchen">
-<meta property="og:description" content="1.	整体设计可视化界面设计：&amp;emsp;&amp;emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删除数据、修改数据的功能；利用lineEdit、comboBox控件获取用户输入的信息实现增加、修改数">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-14T07:14:24.000Z">
-<meta property="article:modified_time" content="2024-03-14T07:17:41.946Z">
-<meta property="article:author" content="Anchen">
-<meta property="article:tag" content="QT">
-<meta name="twitter:card" content="summary">
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-    
-    <!--- Icon Part-->
-    <link rel="icon" type="image/png" href="/images/logo_1.jpg" sizes="192x192">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_1.jpg">
-    <meta name="theme-color" content="#A31F34">
-    <link rel="shortcut icon" href="/images/logo_1.jpg">
-    <!--- Page Info-->
-    
-    <title>
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
         
-            【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写 -
-        
-        Anchen
-    </title>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-<link rel="stylesheet" href="/css/style.css">
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
 
-
-    
-        
-<link rel="stylesheet" href="/assets/build/styles.css">
-
-    
-
-    
-<link rel="stylesheet" href="/fonts/fonts.css">
-
-    
-<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
-
-    
-<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
-
-    <!--- Font Part-->
-    
-    
-    
-    
-
-    <!--- Inject Part-->
-    
-    <script id="hexo-configurations">
-    window.config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/DSC01535.jpg","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Hi,I'm Anchen!","subtitle":{"text":["刀片的缝纫难以逾越，因此智者说救赎之路难行。"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.2rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/Anchenry","instagram":"https://www.instagram.com/anchenry/","zhihu":"https://www.zhihu.com/people/73-44-25-37","twitter":null,"email":"anchenry@163.com"},"qrs":{"qq":"/images/qq.jpg","weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.5.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"主页":{"path":"/","icon":"fa-regular fa-house"},"图册":{"path":"/masonry","icon":"fa-regular fa-camera"},"关于我":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":null,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17"};
-    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-    window.data = {"masonry":true};
-  </script>
-    
-    <!--- Fontawesome Part-->
-    
-<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/brands.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/solid.min.css">
-
-    
-<link rel="stylesheet" href="/fontawesome/regular.min.css">
-
-    
-    
-    
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-<div class="progress-bar-container">
-    
-
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="swup-progress-icon">
-            <i class="fa-solid fa-circle-notch fa-spin"></i>
-        </span>
-    
-</div>
-
-
-<main class="page-container" id="swup">
-
-    
-
-    <div class="main-content-container">
-
-
-        <div class="main-content-header">
-            <header class="navbar-container">
-    
-    <div class="navbar-content">
-        <div class="left">
-            
-                <a class="logo-image" href="/">
-                    <img src="/images/logo_1.jpg">
-                </a>
-            
-            <a class="logo-title" href="/">
-                
-                Anchen
-                
-            </a>
-        </div>
-
-        <div class="right">
-            <!-- PC -->
-            <div class="desktop">
-                <ul class="navbar-list">
-                    
-                        
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-house"></i>
-                                        
-                                        主页
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/masonry"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-camera"></i>
-                                        
-                                        图册
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                        
-                            <li class="navbar-item">
-                                <!-- Menu -->
-                                <a class="" 
-                                    href="/about"  >
-                                    
-                                        
-                                            <i class="fa-regular fa-user"></i>
-                                        
-                                        关于我
-                                    
-                                </a>
-                                <!-- Submenu -->
-                                
-                            </li>
-                    
-                    
-                        <li class="navbar-item search search-popup-trigger">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </li>
-                    
-                </ul>
-            </div>
-            <!-- Mobile -->
-            <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
-                
-                <div class="icon-item navbar-bar">
-                    <div class="navbar-bar-middle"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div class="navbar-drawer w-full absolute top-0 left-0 bg-background-color">
-        <ul class="drawer-navbar-list flex flex-col justify-start items-center">
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/"  >
-                             
-                                
-                                    <i class="fa-regular fa-house"></i>
-                                
-                                主页
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/masonry"  >
-                             
-                                
-                                    <i class="fa-regular fa-camera"></i>
-                                
-                                图册
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-                
-                    <li class="drawer-navbar-item text-base my-1.5 flex justify-center items-center">
-                        <a class="rounded-3xl py-1.5 px-5 hover:border hover:!text-primary active:!text-primary group " 
-                        href="/about"  >
-                             
-                                
-                                    <i class="fa-regular fa-user"></i>
-                                
-                                关于我
-                            
-                        </a>
-                    </li>
-                    <!-- Submenu -->
-                    
-            
-
-        </ul>
-    </div>
-
-    <div class="window-mask"></div>
-
-</header>
-
-
-        </div>
-
-        <div class="main-content-body">
-
-            
-
-            <div class="main-content">
-
-                
-                    <div class="post-page-container">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            
-                <h1 class="article-title-regular">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</h1>
-            
-            </div>
-            
-                    
-        
-        
-            <div class="article-header flex flex-row gap-2 items-center">
-                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-                    <img src="/images/logo_1.jpg">
-                </div>
-                <div class="info flex flex-col justify-between">
-                    <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">安尘</span>
-                        
-                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-03-14 15:14:24</span>
-        <span class="mobile">2024-03-14 15:14:24</span>
-        <span class="hover-info">创建</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-03-14 15:17:41</span>
-            <span class="mobile">2024-03-14 15:17:41</span>
-            <span class="hover-info">更新</span>
-        </span>
-    
-
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/QT/">QT</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/QT/">QT</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        
-
-
-        <div class="article-content markdown-body">
-            <h2 id="1-整体设计"><a href="#1-整体设计" class="headerlink" title="1.	整体设计"></a>1.	整体设计</h2><p>可视化界面设计：<br>&emsp;&emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删除数据、修改数据的功能；利用lineEdit、comboBox控件获取用户输入的信息实现增加、修改数据。<br>&emsp;&emsp;stackedWidget控件创建的pagetwo_1作为学生基本信息查询界面，pagetwo_2作为学生选课及成绩录入界面，pagetwo_3作为学生学业情况查询界面，pagetwo_4作为教师授课情况查询界面，pagetwo_5作为课程信息查询及录入界面，pagetwo_6作为系、班级信息查询界面，pagetwo_7作为教师基本信息查询界面；pagethree_1作为学生选课的界面。<br>&emsp;&emsp;同时在主窗口之外也新建了page_register.ui界面用于显示登录界面，区分是学生登入还是教师登入，并且学生登入时需要输入学号用于选课；新建了choose_tea.ui界面用于选择功能，学生登入和教师登入时可选择的功能也有不同，这样也可以保证数据库的安全性；dialog_addstu.ui界面和dialog_updatestu.ui界面分别用于增加和修改学生基础信息；map1.ui界面用于显示校园地图和实现最短路径的查询和教学设施的地图查询；map_class.ui界面录入课程信息时通过教学楼交互平面图选择课程教室；map_class2.ui界面用于实现通过在主窗口选定课程，自动显示所在教室位置的功能。<br>头文件与cpp文件：<br>&emsp;&emsp;MainWindow.h、page_register.h、choose_tea.h、dialog_addstu.h、dialog_updatestu.h、map1.h、map_class.h、map_class2.h、stu_code.h及其cpp文件均主要实现对应ui界面中的数据操作功能，在头文件和cpp文件中利用C++语言编写代码实现界面中需要的功能。map_struct.h设计用于编写空间数据的类及无向图的类，system.h及其cpp文件用于连接数据库已经实现对数据库中相应数据的增加、删除、修改以及查询和成绩到绩点的换算的功能。Mainwindow.cpp文件中利用指针实现对system.cpp文件中函数的调用，完成对数据库的维护和查询，并在主窗口中显现查询的数据或者通过pushButton的槽函数维护数据。</p>
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Anchen</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Arcpy/" style="font-size: 1.05rem;">Arcpy<sup>1</sup></a><a href="/tags/QT/" style="font-size: 1.05rem;">QT<sup>3</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/QT/" itemprop="url">QT</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/QT/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>QT</span></a></span></div></div><h1 class="post-title" itemprop="name headline">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-03-14T07:14:24.000Z" title="发表于 2024-03-14 15:14:24">2024-03-14</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-03-14T07:17:41.946Z" title="更新于 2024-03-14 15:17:41">2024-03-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/"><header><a class="post-meta-categories" href="/categories/QT/" itemprop="url">QT</a><a href="/tags/QT/" tabindex="-1" itemprop="url">QT</a><h1 id="CrawlerTitle" itemprop="name headline">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Anchen</span><time itemprop="dateCreated datePublished" datetime="2024-03-14T07:14:24.000Z" title="发表于 2024-03-14 15:14:24">2024-03-14</time><time itemprop="dateCreated datePublished" datetime="2024-03-14T07:17:41.946Z" title="更新于 2024-03-14 15:17:41">2024-03-14</time></header><h2 id="1-整体设计"><a href="#1-整体设计" class="headerlink" title="1.	整体设计"></a>1.	整体设计</h2><p>可视化界面设计：<br>&emsp;&emsp;本系统的可视化界面主要显示在MainWindow.ui创建的主窗口上，通过stackedWidget实现不同功能显示在不同页面的分页功能，利用tableWidget显示查询得到的数据；利用pushButton创建槽函数实现鼠标点击实现增加数据、删除数据、修改数据的功能；利用lineEdit、comboBox控件获取用户输入的信息实现增加、修改数据。<br>&emsp;&emsp;stackedWidget控件创建的pagetwo_1作为学生基本信息查询界面，pagetwo_2作为学生选课及成绩录入界面，pagetwo_3作为学生学业情况查询界面，pagetwo_4作为教师授课情况查询界面，pagetwo_5作为课程信息查询及录入界面，pagetwo_6作为系、班级信息查询界面，pagetwo_7作为教师基本信息查询界面；pagethree_1作为学生选课的界面。<br>&emsp;&emsp;同时在主窗口之外也新建了page_register.ui界面用于显示登录界面，区分是学生登入还是教师登入，并且学生登入时需要输入学号用于选课；新建了choose_tea.ui界面用于选择功能，学生登入和教师登入时可选择的功能也有不同，这样也可以保证数据库的安全性；dialog_addstu.ui界面和dialog_updatestu.ui界面分别用于增加和修改学生基础信息；map1.ui界面用于显示校园地图和实现最短路径的查询和教学设施的地图查询；map_class.ui界面录入课程信息时通过教学楼交互平面图选择课程教室；map_class2.ui界面用于实现通过在主窗口选定课程，自动显示所在教室位置的功能。<br>头文件与cpp文件：<br>&emsp;&emsp;MainWindow.h、page_register.h、choose_tea.h、dialog_addstu.h、dialog_updatestu.h、map1.h、map_class.h、map_class2.h、stu_code.h及其cpp文件均主要实现对应ui界面中的数据操作功能，在头文件和cpp文件中利用C++语言编写代码实现界面中需要的功能。map_struct.h设计用于编写空间数据的类及无向图的类，system.h及其cpp文件用于连接数据库已经实现对数据库中相应数据的增加、删除、修改以及查询和成绩到绩点的换算的功能。Mainwindow.cpp文件中利用指针实现对system.cpp文件中函数的调用，完成对数据库的维护和查询，并在主窗口中显现查询的数据或者通过pushButton的槽函数维护数据。</p>
 <ol start="2">
 <li>   连接数据库<br>&emsp;&emsp;该文件中编写的代码主要用于实现数据库的连接和实现对数据库中数据的增加、删除、修改和查询。</li>
 </ol>
@@ -399,432 +261,148 @@
 <p>&#x3D;&#x3D;最短路径查询：&#x3D;&#x3D;<br>&emsp;&emsp;本功能利用在Map1.h中定义的mgraph initgraph()函数录入校园中的所有点空间信息及x坐标和y坐标和名称，并构建边和无向图。在initgraph()函数先在vexsinfo vexs数组中添加顶点信息，先利用for循环创建所有点给与编号，再利用strcpy(）添加点的名称，PX为该点在界面中的x坐标，PY为该店在界面中的y坐标；并在adjmatrix arcs二维数组中存储各边的权值，没有连接的两点之间的边权值赋值为20000，并利用for循环进行对称赋值。<br>Map1.h中定义的void mousePressEvent(QMouseEvent *event)用于用户从地图中选择起点和终点，通过mapFromGlobal(QCursor().pos()).x()获取鼠标点击位置的x值，mapFromGlobal(QCursor().pos()).y()获取鼠标点击位置的y值,再通过if函数进行判断点击位置的点的编号，当界面中comboBox选择为起点时该店编号输出为起点编号，选择为终点时输出为终点编号。<br>&emsp;&emsp;void on_pushButton_clicked()槽函数用于获取起点和终点的编号，再调用shortdistance(campus, start, end)寻找最短路径。<br>void floyd(mgraph c)函数中利用了两个二维数组shortest[i][j]和pathh[i][j]。shortest[i][j]用于存储initgraph()函数中创建的无向图数组，pathh[i][j]用于记录i点和j点最短路径上的第二个点。本函数先利用for循环给hortest[i][j]赋值，再利用for循环进行最短路径计算，计算后shortest[i][j]记录为i和j点之间对端路径的长度，pathh[i][j]可以记录最短路径的经过点。<br>&emsp;&emsp;Shortdistance()函数先调用了void floyd(mgraph c)函数计算获得最短路径，再利用QT绘图的双缓冲机制，定义了QPixmap pix对象，再利用target()函数设置了打印的位置和大小，QPixmap umap()函数记录了图片路径和名称，drawPixmap()函数实现了显示校园地图，再定义 QPen pen画笔，通过while循环不断判断pathh[i][j]是否为终点的编号逐线段输出最短路径在pix上，最后利用update()触发void paintEvent(QPaintEvent *event)绘制事件重新绘制。</p>
 <p>&#x3D;&#x3D;教学设施查询：&#x3D;&#x3D;<br>&emsp;&emsp;定义了void showlocation()用于教学设施的查询，同样通过双缓冲机制，先绘制在pix上最后用update()函数触发void paintEvent(QPaintEvent *event)绘制事件重新绘制。函数中通过对comboBox_2中用户选择内容的判断在不同位置绘制不同的图形，主要利用了drawRect（）绘制矩形、drawText（）绘制字和drawEllipse()绘制圆。</p>
 <h2 id="13-界面跳转"><a href="#13-界面跳转" class="headerlink" title="13. 界面跳转"></a>13. 界面跳转</h2><p>&emsp;&emsp;编写代码时主要利用了两种方式来显示界面。第一种利用了信号和槽原理，通过emit发送定义的信号，并利用connect()接收，同时定义了auto类型指针实现规定跳转的界面和需要调用的函数。第二种通过包含对应ui界面的头文件创建对象直接调用show()或exec()函数实现画面跳转。<br>&emsp;&emsp;关闭界面时也定义了一些pushButton控件触发槽函数，进一步调用close()函数关闭界面。</p>
-
-        </div>
-
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Anchen</div><div class="post-copyright__author_desc">心存善良，万物晴朗</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/')">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写&amp;url=http://example.com/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Anchen</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/QT/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>QT<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/03/14/%E3%80%90Arcpy%E3%80%91%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E9%87%8F%E9%95%B6%E5%B5%8C%E5%92%8C%E4%B8%8A%E4%BC%A0%E5%88%87%E7%89%87/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【Arcpy】栅格数据的批量镶嵌和上传切片</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2023/11/13/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" title="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（2）——数据库实现"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-11-13</div><div class="title">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（2）——数据库实现</div></div></a></div><div><a href="/2023/10/13/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/" title="【QT+SQLite】实现大学生课程学习管理与成绩评价系统整体设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-10-13</div><div class="title">【QT+SQLite】实现大学生课程学习管理与成绩评价系统整体设计</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="https://ooo.0x0.ooo/2024/08/19/OtPfpP.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.</span> <span class="toc-text">1.	整体设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%99%BB%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-number">2.</span> <span class="toc-text">3.	登入验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AD%A6%E7%94%9F%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">4.	学生基础信息查询和维护：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">5.	学生选课信息查询和维护：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B8%9A%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">6.	学生学业信息查询：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%B3%BB%E3%80%81%E7%8F%AD%E7%BA%A7%E4%BF%A1%E6%81%AF%E7%9A%84%E7%BB%B4%E6%8A%A4%E5%92%8C%E6%9F%A5%E8%AF%A2"><span class="toc-number">6.</span> <span class="toc-text">7. 系、班级信息的维护和查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%95%99%E5%B8%88%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">8. 教师基本信息查询和维护：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">9. 课程信息查询和维护：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%95%99%E5%B8%88%E6%8E%88%E8%AF%BE%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">10. 教师授课信息查询：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">10.</span> <span class="toc-text">11. 学生选课功能：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%A0%A1%E5%9B%AD%E5%AF%BC%E8%88%AA%EF%BC%9A"><span class="toc-number">11.</span> <span class="toc-text">12. 校园导航：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E7%95%8C%E9%9D%A2%E8%B7%B3%E8%BD%AC"><span class="toc-number">12.</span> <span class="toc-text">13. 界面跳转</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/14/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99/" title="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</a><time datetime="2024-03-14T07:14:24.000Z" title="发表于 2024-03-14 15:14:24">2024-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/14/%E3%80%90Arcpy%E3%80%91%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E9%87%8F%E9%95%B6%E5%B5%8C%E5%92%8C%E4%B8%8A%E4%BC%A0%E5%88%87%E7%89%87/" title="【Arcpy】栅格数据的批量镶嵌和上传切片">【Arcpy】栅格数据的批量镶嵌和上传切片</a><time datetime="2024-03-14T07:05:46.000Z" title="发表于 2024-03-14 15:05:46">2024-03-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/13/%E3%80%90QT-SQLite%E3%80%91%E5%AE%9E%E7%8E%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AE%A1%E7%90%86%E4%B8%8E%E6%88%90%E7%BB%A9%E8%AF%84%E4%BB%B7%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E7%8E%B0/" title="【QT+SQLite】实现大学生课程学习管理与成绩评价系统（2）——数据库实现">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（2）——数据库实现</a><time datetime="2023-11-13T03:45:14.000Z" title="发表于 2023-11-13 11:45:14">2023-11-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/13/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/" title="【QT+SQLite】实现大学生课程学习管理与成绩评价系统整体设计">【QT+SQLite】实现大学生课程学习管理与成绩评价系统整体设计</a><time datetime="2023-10-13T03:45:14.000Z" title="发表于 2023-10-13 11:45:14">2023-10-13</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="Anchen" target="_blank">Anchen</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;https://ooo.0x0.ooo/2024/08/19/OtPQSG.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Arcpy/" style="font-size: 0.88rem;">Arcpy<sup>1</sup></a><a href="/tags/QT/" style="font-size: 0.88rem;">QT<sup>3</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
         
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>标题:</strong> 【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</li>
-        <li><strong>作者:</strong> 安尘</li>
-        <li><strong>创建于
-                :</strong> 2024-03-14 15:14:24</li>
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
         
-            <li>
-                <strong>更新于
-                    :</strong> 2024-03-14 15:17:41
-            </li>
-        
-        <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2024/03/14/【QT-SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写/
-        </li>
-        <li>
-            <strong>
-                版权声明:
-            </strong>
-            
-            本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
-            
-
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box">
-                
-                    <li class="tag-item">
-                        <a href="/tags/QT/">#QT</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                        rel="next"
-                        href="/2024/03/14/%E3%80%90Arcpy%E3%80%91%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE%E7%9A%84%E6%89%B9%E9%87%8F%E9%95%B6%E5%B5%8C%E5%92%8C%E4%B8%8A%E4%BC%A0%E5%88%87%E7%89%87/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">【Arcpy】栅格数据的批量镶嵌和上传切片</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-
-        
-            <div class="comment-container">
-                <div class="comments-container pjax">
-    <div id="comment-anchor"></div>
-    <div class="comment-area-title">
-        <i class="fa-solid fa-comments"></i>&nbsp;评论
-    </div>
-    
-
-        
-            
- 
-    <div id="waline"></div>
-    <script type="module"  data-swup-reload-script>
-        import { init } from '/js/libs/waline.mjs';
-
-        function loadWaline() {
-            init({
-                el: '#waline',
-                serverURL: 'https://example.example.com',
-                lang: 'zh-CN',
-                dark: 'body[class~="dark-mode"]',
-                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
-            });
-        }
-
-        if ('true') {
-            const loadWalineTimeout = setTimeout(() => {
-                loadWaline();
-                clearTimeout(loadWalineTimeout);
-            }, 1000);
-        } else {
-            window.addEventListener('DOMContentLoaded', loadWaline);
-        }
-        
-    </script>
-
-
-
-        
-    
-</div>
-
-            </div>
-        
-    </div>
-
-    
-        <div class="toc-content-container">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">此页目录</div>
-        <div class="page-title">【QT+SQLite】实现大学生课程学习管理与成绩评价系统（3）——代码编写</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">1.	整体设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%99%BB%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="nav-text">3.	登入验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AD%A6%E7%94%9F%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="nav-text">4.	学生基础信息查询和维护：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="nav-text">5.	学生选课信息查询和维护：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%AD%A6%E7%94%9F%E5%AD%A6%E4%B8%9A%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="nav-text">6.	学生学业信息查询：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E7%B3%BB%E3%80%81%E7%8F%AD%E7%BA%A7%E4%BF%A1%E6%81%AF%E7%9A%84%E7%BB%B4%E6%8A%A4%E5%92%8C%E6%9F%A5%E8%AF%A2"><span class="nav-text">7. 系、班级信息的维护和查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%95%99%E5%B8%88%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="nav-text">8. 教师基本信息查询和维护：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%E5%92%8C%E7%BB%B4%E6%8A%A4%EF%BC%9A"><span class="nav-text">9. 课程信息查询和维护：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%95%99%E5%B8%88%E6%8E%88%E8%AF%BE%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2%EF%BC%9A"><span class="nav-text">10. 教师授课信息查询：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%AD%A6%E7%94%9F%E9%80%89%E8%AF%BE%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-text">11. 学生选课功能：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E6%A0%A1%E5%9B%AD%E5%AF%BC%E8%88%AA%EF%BC%9A"><span class="nav-text">12. 校园导航：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E7%95%8C%E9%9D%A2%E8%B7%B3%E8%BD%AC"><span class="nav-text">13. 界面跳转</span></a></li></ol>
-
-    </div>
-</div>
-        </div>
-    
-</div>
-
-
-
-                
-
-            </div>
-
-            
-
-        </div>
-
-        <div class="main-content-footer">
-            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
-    <div class="info-container py-3 text-center">
-        
-        <div class="text-center">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">安尘</a>
-        </div>
-        
-            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
-                
-                    <span id="busuanzi_container_site_uv" class="lg:!block">
-                        <span class="text-sm">访问人数</span>
-                        <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="lg:!block">
-                        <span class="text-sm">总访问量</span>
-                        <span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
-            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.5.0</a></span>
-        </div>
-        
-        
-            <div>
-                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-            <script data-swup-reload-script>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        
-        
-        
-    </div>  
-</footer>
-        </div>
-    </div>
-
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
-    
-
-    <div class="right-side-tools-container">
-        <div class="side-tools-container">
-    <ul class="hidden-tools-list">
-        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
-            <i class="fa-regular fa-magnifying-glass-plus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
-            <i class="fa-regular fa-magnifying-glass-minus"></i>
-        </li>
-
-        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
-            <i class="fa-regular fa-moon"></i>
-        </li>
-
-        <!-- rss -->
-        
-
-        
-
-        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
-            <i class="fa-regular fa-arrow-down"></i>
-        </li>
-    </ul>
-
-    <ul class="visible-tools-list">
-        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
-            <i class="fa-regular fa-cog fa-spin"></i>
-        </li>
-        
-            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
-        
-    </ul>
-</div>
-
-    </div>
-
-    <div class="image-viewer-container">
-    <img src="">
-</div>
-
-
-    
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fa-solid fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa-solid fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-
-</main>
-
-
-    
-<script src="/js/libs/Swup.min.js"></script>
-
-<script src="/js/libs/SwupSlideTheme.min.js"></script>
-
-<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
-
-<script src="/js/libs/SwupProgressPlugin.min.js"></script>
-
-<script src="/js/libs/SwupScrollPlugin.min.js"></script>
-
-<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
-
-<script>
-    const swup = new Swup({
-        plugins: [
-            new SwupScriptsPlugin({
-                optin: true,
-            }),
-            new SwupProgressPlugin(),
-            new SwupScrollPlugin({
-                offset: 80,
-            }),
-            new SwupSlideTheme({
-                mainElement: ".main-content-body",
-            }),
-            new SwupPreloadPlugin(),
-        ],
-        containers: ["#swup"],
-    });
-</script>
-
-
-
-
-
-
-
-<script src="/js/tools/imageViewer.js" type="module"></script>
-
-<script src="/js/utils.js" type="module"></script>
-
-<script src="/js/main.js" type="module"></script>
-
-<script src="/js/layouts/navbarShrink.js" type="module"></script>
-
-<script src="/js/tools/scrollTopBottom.js" type="module"></script>
-
-<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
-
-<script src="/js/layouts/categoryList.js" type="module"></script>
-
-
-
-    
-<script src="/js/tools/localSearch.js" type="module"></script>
-
-
-
-
-    
-<script src="/js/tools/codeBlock.js" type="module"></script>
-
-
-
-
-    
-<script src="/js/layouts/lazyload.js" type="module"></script>
-
-
-
-
-    
-<script src="/js/tools/runtime.js"></script>
-
-    
-<script src="/js/libs/odometer.min.js"></script>
-
-    
-<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
-
-
-
-
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Anchen 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
   
-<script src="/js/libs/Typed.min.js"></script>
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
 
-  
-<script src="/js/plugins/typed.js" type="module"></script>
+  typeof typed === 'object' && typed.destroy()
 
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
 
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
 
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
 
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
+  typeof panguInit === 'function' && panguInit()
 
-    
-<script src="/js/libs/minimasonry.min.js"></script>
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
 
-    
-<script src="/js/plugins/masonry.js" type="module"></script>
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
 
-
-<div class="post-scripts" data-swup-reload-script>
-    
-        
-<script src="/js/libs/anime.min.js"></script>
-
-        
-<script src="/js/tools/tocToggle.js" type="module"></script>
-
-<script src="/js/layouts/toc.js" type="module"></script>
-
-<script src="/js/plugins/tabs.js" type="module"></script>
-
-    
-</div>
-
-
-</body>
-</html>
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
